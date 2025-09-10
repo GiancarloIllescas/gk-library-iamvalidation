@@ -20,10 +20,10 @@ Devuelve **`true`** si el IAM valida las credenciales; **`false`** si no.
 ```xml
 <configuration>
   <appSettings>
-    <add key="IAM.BaseUrl"              value="https://devboc02:4940" />
-    <add key="IAM.EndpointAuthValidate" value="api/v1/IAM/channel/Auth/Validate" />
-    <add key="IAM.TimeOutInSeconds"     value="30" />
-    <add key="IAM.CacheMinutesTTL"      value="60" />
+    <add key="IAM.Validation.BaseUrl"              value="https://devboc02:4940" />
+    <add key="IAM.Validation.EndpointAuthValidate" value="api/v1/IAM/channel/Auth/Validate" />
+    <add key="IAM.Validation.TimeOutInSeconds"     value="30" />
+    <add key="IAM.Validation.CacheMinutesTTL"      value="60" />
   </appSettings>
 </configuration>
 ```

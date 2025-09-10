@@ -14,9 +14,9 @@ namespace Yape.Library.IamValidation.Infrastructure.Adapters
 
             return new IamServiceSetting
             {
-                BaseUrl = GetRequired(a, "IAM.BaseUrl"),
-                EndpointAuthValidate = GetRequired(a, "IAM.EndpointAuthValidate"),
-                TimeOutInSeconds = int.TryParse(GetRequired(a, "IAM.TimeOutInSeconds"), out int ttl) ? ttl : 60
+                BaseUrl = GetRequired(a, "IAM.Validation.BaseUrl"),
+                EndpointAuthValidate = GetRequired(a, "IAM.Validation.EndpointAuthValidate"),
+                TimeOutInSeconds = int.TryParse(GetRequired(a, "IAM.Validation.TimeOutInSeconds"), out int ttl) ? ttl : 60
             };
         }
 

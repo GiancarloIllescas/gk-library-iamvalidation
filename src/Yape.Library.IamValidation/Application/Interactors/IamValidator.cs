@@ -12,7 +12,7 @@ namespace Yape.Library.IamValidation.Application.Interactors
     {
         private static readonly Lazy<IIamService> _lazyInstance = new Lazy<IIamService>(CreateProvider);
         private static readonly ICacheProvider _cache = new CacheProvider();
-        private static readonly double _cacheMinutesTTL = double.TryParse(ConfigurationManager.AppSettings.Get("IAM.CacheMinutesTTL"), out double ttl) ? ttl : 60;
+        private static readonly double _cacheMinutesTTL = double.TryParse(ConfigurationManager.AppSettings.Get("IAM.Validation.CacheMinutesTTL"), out double ttl) ? ttl : 60;
         private const string TransaccionCompletadaCorrectamente = "00";
         private const string _cacheKey = "yape:iamvalidator:{0}";
 
