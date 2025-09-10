@@ -1,20 +1,96 @@
-#Introducción 
-TODO: Proporcione una breve introducción del proyecto. En esta sección se deben explicar los objetivos o los motivos del proyecto. 
+# Yape.Library.IamValidation
 
-# Tareas iniciales
-TODO: Guíe a los usuarios para que apliquen el código a su sistema propio sin ningún problema. En esta sección se puede hablar sobre:
-1.	El proceso de instalación
-2.	Las dependencias de software
-3.	Las últimas versiones
-4.	Las referencias de API
+NuGet para **validar apps** contra el servicio **IAM**.  
+Expuesto como **clase estática** con un único método **Validate**:
 
-# Compilación y prueba
-TODO: Describa y muestre cómo compilar el código y ejecutar las pruebas. 
+```csharp
+public static Task<bool> Validate(AuthValidateDto dto);
+```
 
-# Contribución
-TODO: Explique cómo pueden contribuir otros usuarios y desarrolladores a la mejora del código. 
+Devuelve **`true`** si el IAM valida las credenciales; **`false`** si no.  
+**Quien llama siempre debe verificar el booleano y manejar las excepciones**.
 
-Si quiere obtener más información sobre cómo crear archivos Léame descriptivos, consulte las siguientes [directrices](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). También puede inspirarse en los archivos Léame siguientes:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+---
+
+## Instalación
+
+1. Agregar el paquete desde YapeFeed.
+2. Configurar los `appSettings` en el `web.config` / `app.config` del **proyecto host**.
+
+```xml
+<configuration>
+  <appSettings>
+    <add key="IAM.Validation.BaseUrl"              value="https://devboc02:4940" />
+    <add key="IAM.Validation.EndpointAuthValidate" value="api/v1/IAM/channel/Auth/Validate" />
+    <add key="IAM.Validation.TimeOutInSeconds"     value="30" />
+    <add key="IAM.Validation.CacheMinutesTTL"      value="60" />
+  </appSettings>
+</configuration>
+```
+
+---
+
+## DTO de entrada
+
+```csharp
+public class AuthValidateDto
+{
+    public string Username    { get; set; } = string.Empty;
+    public string Password    { get; set; } = string.Empty;
+    public string PublicToken { get; set; } = string.Empty;
+    public string AppUserId   { get; set; } = string.Empty;
+    public string Channel     { get; set; } = string.Empty;
+}
+```
+
+---
+
+## Uso rápido
+
+```csharp
+using Yape.Library.IamValidation; // namespace del paquete
+
+var dto = new AuthValidateDto
+{
+    Username    = "usuario",
+    Password    = "password",
+    PublicToken = "abc123",
+    AppUserId   = "appUserId",
+    Channel     = "DevTest"
+};
+
+bool autorizado;
+try
+{
+    autorizado = await IamValidator.Validate(dto);
+}
+catch (Exception ex)
+{
+    // Manejar la excepción (log, mapeo a dominio, etc.)
+    throw;
+}
+
+if (!autorizado)
+{
+    // 401/forbidden de la app, o el flujo que corresponda
+}
+```
+
+---
+
+## Manejo de errores
+
+El método puede lanzar excepciones si ocurre un problema **no funcional**:
+
+- `HttpRequestException` (fallas de red / 5xx / DNS, etc.)
+- `TaskCanceledException` (timeout)
+- `InvalidOperationException` (contenido inesperado / JSON inválido)
+
+---
+
+## Caching
+
+- El resultado **true/false** se guarda en cache internamente por `IAM.CacheMinutesTTL` minutos.  
+- El cache **no** se usa si la llamada falló (excepción).
+
+---
