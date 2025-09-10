@@ -66,7 +66,7 @@ try
 }
 catch (Exception ex)
 {
-    // Manejr la excepción (log, mapeo a dominio, etc.)
+    // Manejar la excepción (log, mapeo a dominio, etc.)
     throw;
 }
 
@@ -90,7 +90,7 @@ El método puede lanzar excepciones si ocurre un problema **no funcional**:
 
 ## Caching
 
-- El resultado **true/false** se guarda en cache internamente por `IAM.CacheMinutesTTL`.  
+- El resultado **true/false** se guarda en cache internamente por `IAM.CacheMinutesTTL` minutos.  
 - El cache **no** se usa si la llamada falló (excepción).
 
 ---
