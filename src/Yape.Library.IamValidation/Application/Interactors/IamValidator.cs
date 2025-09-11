@@ -25,7 +25,7 @@ namespace Yape.Library.IamValidation.Application.Interactors
 
         public static async Task<bool> Validate(AuthValidateDto dto)
         {
-            var cacheKey = string.Format(_cacheKey, dto.Username);
+            var cacheKey = string.Format(_cacheKey, dto.Username.ToLower());
 
             bool? authenticated = _cache.Get<bool?>(cacheKey);
 
