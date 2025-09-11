@@ -23,14 +23,13 @@ name: $(major).$(minor)$(Rev:.rr)
 
 steps:
 - task: NuGetToolInstaller@1
+  displayName: 'Install nuget'
+  
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-    vstsFeed: '80c17264-11a0-4f4d-98e0-86e0e5e465ce/6ce4fc23-bb30-4cb1-88e4-f2cddcf380d9'
-    includeNuGetOrg: false
-  displayName: 'Install nuget'
+
 
 - task: NuGetCommand@2
   displayName: 'Restore nuget packages'
