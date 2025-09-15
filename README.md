@@ -35,11 +35,10 @@ Devuelve **`true`** si el IAM valida las credenciales; **`false`** si no.
 ```csharp
 public class AuthValidateDto
 {
-    public string Username    { get; set; } = string.Empty;
-    public string Password    { get; set; } = string.Empty;
-    public string PublicToken { get; set; } = string.Empty;
-    public string AppUserId   { get; set; } = string.Empty;
-    public string Channel     { get; set; } = string.Empty;
+    public string Authorization  { get; set; } = string.Empty;
+    public string PublicToken    { get; set; } = string.Empty;
+    public string AppUserId      { get; set; } = string.Empty;
+    public string Channel        { get; set; } = string.Empty;
 }
 ```
 
@@ -52,11 +51,10 @@ using Yape.Library.IamValidation; // namespace del paquete
 
 var dto = new AuthValidateDto
 {
-    Username    = "usuario",
-    Password    = "password",
-    PublicToken = "abc123",
-    AppUserId   = "appUserId",
-    Channel     = "DevTest"
+    Authorization = "password",
+    PublicToken   = "abc123",
+    AppUserId     = "appUserId",
+    Channel       = "DevTest"
 };
 
 bool autorizado;
