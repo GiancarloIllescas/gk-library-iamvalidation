@@ -11,8 +11,7 @@ namespace EjemploDeUso.IamValidation
         {
             var reqTest = new AuthValidateDto
             {
-                Username = "BCP_TEST_USER",
-                Password = "IAeLZtOYO0GEHEGC",
+                Authorization = "Basic QkNQX1RFU1RfVVNFUjpJQWVMWnRPWU8wR0VIRUdD",
                 PublicToken = "E39B8A04-EBCE-4AD6-BAFB-9BB851141299",
                 AppUserId = "BC2400-test",
                 Channel = "ADES-test"

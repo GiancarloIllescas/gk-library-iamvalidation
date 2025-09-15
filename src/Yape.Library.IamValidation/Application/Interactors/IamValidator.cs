@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Text;
 using System.Threading.Tasks;
 using Yape.Library.IamValidation.Application.Ports;
 using Yape.Library.IamValidation.Infrastructure.Adapters;
@@ -25,7 +26,18 @@ namespace Yape.Library.IamValidation.Application.Interactors
 
         public static async Task<bool> Validate(AuthValidateDto dto)
         {
-            var cacheKey = string.Format(_cacheKey, dto.Username.ToLower());
+            // Hago decode de Authorization
+            var encodedCredentials = dto.Authorization.Replace("Basic ", string.Empty);
+            var decodedBytes = Convert.FromBase64String(encodedCredentials);
+            var decodedString = Encoding.UTF8.GetString(decodedBytes);
+            var parts = decodedString.Split(':');
+
+            var userName = parts[0];
+            var password = parts[1];
+
+
+            // Busco en cache
+            var cacheKey = string.Format(_cacheKey, userName.ToLower());
 
             bool? authenticated = _cache.Get<bool?>(cacheKey);
 
@@ -33,11 +45,13 @@ namespace Yape.Library.IamValidation.Application.Interactors
             {
                 return (bool)authenticated;
             }
-            
+
+
+            // Valido contra IAM
             var req = new AuthValidateRequest
             {
-                Username = dto.Username,
-                Password = dto.Password,
+                Username = userName,
+                Password = password,
                 PublicToken = dto.PublicToken,
                 AppUserId = dto.AppUserId,
                 Channel = dto.Channel,
@@ -52,8 +66,10 @@ namespace Yape.Library.IamValidation.Application.Interactors
 
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
     }
 }
