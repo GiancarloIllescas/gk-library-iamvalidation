@@ -39,8 +39,6 @@ namespace Yape.Library.IamValidation.Infrastructure.Adapters
 
             using var resp = await _httpClient.SendAsync(httpReq, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             
-            resp.EnsureSuccessStatusCode();
-
             using var stream = await resp.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
             var result = await JsonSerializer.DeserializeAsync<AuthValidateResponse>(stream, _jsonOpts).ConfigureAwait(false);
