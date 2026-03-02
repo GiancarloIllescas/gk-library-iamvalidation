@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Text;
 using System.Threading.Tasks;
-using Yape.Library.IamValidation.Application.Ports;
-using Yape.Library.IamValidation.Infrastructure.Adapters;
-using Yape.Library.IamValidation.Infrastructure.Models;
-using YapeGeneralLimits.Application.Models.Dtos;
+using GK.Library.IamValidation.Application.Ports;
+using GK.Library.IamValidation.Infrastructure.Adapters;
+using GK.Library.IamValidation.Infrastructure.Models;
+using GKGeneralLimits.Application.Models.Dtos;
 
-namespace Yape.Library.IamValidation.Application.Interactors
+namespace GK.Library.IamValidation.Application.Interactors
 {
     public class IamValidator
     {
@@ -15,7 +15,7 @@ namespace Yape.Library.IamValidation.Application.Interactors
         private static readonly ICacheProvider _cache = new CacheProvider();
         private static readonly double _cacheMinutesTTL = double.TryParse(ConfigurationManager.AppSettings.Get("IAM.Validation.CacheMinutesTTL"), out double ttl) ? ttl : 60;
         private const string TransaccionCompletadaCorrectamente = "00";
-        private const string _cacheKey = "yape:iamvalidator:{0}";
+        private const string _cacheKey = "gk:iamvalidator:{0}";
 
         private static IIamService CreateProvider()
         {
