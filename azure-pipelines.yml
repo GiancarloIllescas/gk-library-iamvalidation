@@ -56,7 +56,7 @@ steps:
   displayName: 'Create nupkgs'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/Yape.Library.IamValidation/*.csproj'
+    packagesToPack: 'src/Gk.Library.IamValidation/*.csproj'
     versioningScheme: byBuildNumber
 
 - task: DotNetCoreCLI@2

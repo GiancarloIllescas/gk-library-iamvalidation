@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>Yape.Library.IamValidation</RootNamespace>
-    <AssemblyName>Yape.Library.IamValidation</AssemblyName>
+    <RootNamespace>GK.Library.IamValidation</RootNamespace>
+    <AssemblyName>GK.Library.IamValidation</AssemblyName>
 
     <!-- NuGet: empaquetar al compilar -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <!-- Metadatos del paquete -->
-    <PackageId>Yape.Library.IamValidation</PackageId>
+    <PackageId>GK.Library.IamValidation</PackageId>
     <Version>1.0.0</Version>
     <Description>Librería para validar con IAM</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

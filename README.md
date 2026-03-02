@@ -1,4 +1,4 @@
-# Yape.Library.IamValidation
+# GK.Library.IamValidation
 
 NuGet para **validar apps** contra el servicio **IAM**.  
 Expuesto como **clase estática** con un único método **Validate**:
@@ -14,7 +14,7 @@ Devuelve **`true`** si el IAM valida las credenciales; **`false`** si no.
 
 ## Instalación
 
-1. Agregar el paquete desde YapeFeed.
+1. Agregar el paquete desde GKFeed.
 2. Configurar los `appSettings` en el `web.config` / `app.config` del **proyecto host**.
 
 ```xml
@@ -47,7 +47,7 @@ public class AuthValidateDto
 ## Uso rápido
 
 ```csharp
-using Yape.Library.IamValidation; // namespace del paquete
+using GK.Library.IamValidation; // namespace del paquete
 
 var dto = new AuthValidateDto
 {

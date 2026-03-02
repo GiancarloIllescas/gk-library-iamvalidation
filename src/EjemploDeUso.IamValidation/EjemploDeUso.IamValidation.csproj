@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Yape.Library.IamValidation\Yape.Library.IamValidation.csproj">
+    <ProjectReference Include="..\Gk.Library.IamValidation\Gk.Library.IamValidation.csproj">
       <Project>{1692a23c-45bb-4ece-81c4-be56efd4e233}</Project>
-      <Name>Yape.Library.IamValidation</Name>
+      <Name>Gk.Library.IamValidation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
