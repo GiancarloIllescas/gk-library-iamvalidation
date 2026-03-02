@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Runtime.Caching;
-using Yape.Library.IamValidation.Application.Ports;
+using GK.Library.IamValidation.Application.Ports;
 
-namespace Yape.Library.IamValidation.Infrastructure.Adapters
+namespace GK.Library.IamValidation.Infrastructure.Adapters
 {
     public sealed class CacheProvider : ICacheProvider
     {

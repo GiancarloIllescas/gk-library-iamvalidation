@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Yape.Library.IamValidation.Application.Ports
+namespace GK.Library.IamValidation.Application.Ports
 {
     public interface ICacheProvider
     {

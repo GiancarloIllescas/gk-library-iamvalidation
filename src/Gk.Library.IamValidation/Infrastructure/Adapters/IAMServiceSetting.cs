@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
-namespace Yape.Library.IamValidation.Infrastructure.Adapters
+namespace GK.Library.IamValidation.Infrastructure.Adapters
 {
     public class IamServiceSetting
     {
         public string BaseUrl { get; set; } = string.Empty;
         public string EndpointAuthValidate { get; set; } = string.Empty;
         public int TimeOutInSeconds { get; set; } = 30;
-        
+
         public static IamServiceSetting FromAppSettings()
         {
             var a = System.Configuration.ConfigurationManager.AppSettings;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Yape.Library.IamValidation.Application.Interactors;
-using YapeGeneralLimits.Application.Models.Dtos;
+using GK.Library.IamValidation.Application.Interactors;
+using GKGeneralLimits.Application.Models.Dtos;
 
 namespace EjemploDeUso.IamValidation
 {

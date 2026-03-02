@@ -1,5 +1,4 @@
-﻿
-namespace YapeGeneralLimits.Application.Models.Dtos
+namespace GKGeneralLimits.Application.Models.Dtos
 {
     public class AuthValidateDto
     {
