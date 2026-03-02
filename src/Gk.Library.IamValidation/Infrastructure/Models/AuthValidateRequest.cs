@@ -1,4 +1,4 @@
-﻿namespace Yape.Library.IamValidation.Infrastructure.Models
+namespace GK.Library.IamValidation.Infrastructure.Models
 {
     public class AuthValidateRequest
     {

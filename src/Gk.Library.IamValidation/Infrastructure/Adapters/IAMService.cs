@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Yape.Library.IamValidation.Application.Ports;
-using Yape.Library.IamValidation.Infrastructure.Models;
+using GK.Library.IamValidation.Application.Ports;
+using GK.Library.IamValidation.Infrastructure.Models;
 
-namespace Yape.Library.IamValidation.Infrastructure.Adapters
+namespace GK.Library.IamValidation.Infrastructure.Adapters
 {
     public class IamService : IIamService
     {
